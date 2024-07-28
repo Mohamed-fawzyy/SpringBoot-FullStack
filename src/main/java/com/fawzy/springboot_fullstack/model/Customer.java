@@ -1,25 +1,53 @@
 package com.fawzy.springboot_fullstack.model;
 
+import jakarta.persistence.*;
+import org.springframework.lang.NonNull;
+
+@Entity
 public class Customer {
 
-    private int id;
+    @Id
+    @SequenceGenerator(
+            name = "customer_id_seq",
+            sequenceName = "customer_id_seq"
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "customer_id_seq"
+    )
+    private Integer id;
+
+    @Column(nullable = false)
     private int age;
-    
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String email;
 
-    public Customer(int id, String name, String email, int age) {
+    public Customer(Integer id, String name, String email, int age) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
     }
 
-    public int getId() {
+    public Customer(String name, String email, int age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+
+    public Customer() {
+
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -39,12 +67,10 @@ public class Customer {
         this.email = email;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+    public void setAge(int age) { this.age = age; }
 }
 

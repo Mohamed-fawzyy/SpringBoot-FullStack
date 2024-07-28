@@ -1,0 +1,26 @@
+services:
+  db:
+    ports:
+      - "5432:5432"
+
+    container_name: postgres
+
+    image: postgres
+
+    environment:
+      POSTGRES_USER: fawzy
+      POSTGRES_PASSWORD: root
+      PGDATA: /data/postgres
+
+    networks:
+      - db
+    volumes:
+      - db:/data/postgres
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:

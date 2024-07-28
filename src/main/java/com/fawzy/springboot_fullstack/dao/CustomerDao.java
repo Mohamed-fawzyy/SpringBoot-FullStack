@@ -8,8 +8,11 @@ import java.util.Optional;
 public interface CustomerDao {
 
     void insert(Customer customer);
-    void update(Customer customer, int id);
+    void update(Customer customer);
     void delete(int id);
+
+    boolean existsCustomerWithEmail(String email);
+    boolean existsCustomerWithId(Integer id);
 
     List<Customer> getAllCustomers();
     Optional<Customer> selectCustomerById(int id);
