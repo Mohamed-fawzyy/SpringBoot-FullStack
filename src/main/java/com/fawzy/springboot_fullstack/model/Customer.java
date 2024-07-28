@@ -1,7 +1,6 @@
 package com.fawzy.springboot_fullstack.model;
 
 import jakarta.persistence.*;
-import org.springframework.lang.NonNull;
 
 @Entity
 public class Customer {
@@ -26,13 +25,6 @@ public class Customer {
     @Column(nullable = false)
     private String email;
 
-    public Customer(Integer id, String name, String email, int age) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
-
     public Customer(String name, String email, int age) {
         this.name = name;
         this.email = email;
@@ -47,9 +39,9 @@ public class Customer {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
