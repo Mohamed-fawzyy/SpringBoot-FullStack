@@ -17,11 +17,6 @@ public class CustomerController {
     @Autowired
     private CustomerService customerService;
 
-//    @PostMapping
-//    public void addCustomer(@NonNull @RequestBody Customer customer) {
-//        customerService.addCustomer(customer);
-//    }
-
     @PostMapping
     public void customerRegister(@NonNull @RequestBody CustomerRegistrationRequest customer) {
         customerService.customerRegistration(customer);

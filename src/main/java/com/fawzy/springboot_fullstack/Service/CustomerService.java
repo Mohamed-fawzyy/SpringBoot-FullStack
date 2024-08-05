@@ -2,6 +2,7 @@ package com.fawzy.springboot_fullstack.Service;
 
 import com.fawzy.springboot_fullstack.dao.CustomerDao;
 import com.fawzy.springboot_fullstack.exceptions.DuplicateResourceException;
+import com.fawzy.springboot_fullstack.exceptions.RequestValidationException;
 import com.fawzy.springboot_fullstack.exceptions.ResourceNotFoundException;
 import com.fawzy.springboot_fullstack.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class CustomerService {
             boolean flag = false;
 
             if (c.email() != null && !c.email().equals(oldCustomerData.getEmail())) {
+
+                if (customerDao.existsCustomerWithEmail(c.email())) {
+                    throw new DuplicateResourceException("This email address already exists.");
+                }
                 oldCustomerData.setEmail(c.email());
                 flag = true;
             }
@@ -40,7 +45,7 @@ public class CustomerService {
             }
 
             if (!flag) {
-                throw new DuplicateResourceException("No changes, this data already exists");
+                throw new RequestValidationException("No changes, this data already exists");
             }
             customerDao.update(oldCustomerData);
         }
