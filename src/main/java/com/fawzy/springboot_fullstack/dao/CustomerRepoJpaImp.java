@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
-public class CustomerJPADataAccessService implements CustomerDao {
+@Repository("jpa")
+public class CustomerRepoJpaImp implements CustomerDao {
 
     @Autowired
     private CustomerRepositoryJPA repository;
@@ -35,7 +35,7 @@ public class CustomerJPADataAccessService implements CustomerDao {
     }
 
     @Override
-    public boolean existsCustomerWithId(Integer id) {
+    public boolean existsCustomerWithId(int id) {
         return repository.existsCustomerById(id);
     }
 

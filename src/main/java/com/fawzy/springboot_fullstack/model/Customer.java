@@ -26,13 +26,13 @@ public class Customer {
     )
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "age")
     private int age;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "name")
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "email")
     private String email;
 
     public Customer(String name, String email, int age) {
@@ -43,6 +43,9 @@ public class Customer {
 
     public Customer() {
 
+    }
+
+    public Customer(int id, String name, String email, int age) {
     }
 
     public Long getId() {
@@ -69,7 +72,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 

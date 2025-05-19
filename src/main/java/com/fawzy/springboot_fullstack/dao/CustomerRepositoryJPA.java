@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CustomerRepositoryJPA extends JpaRepository<Customer, Integer> {
 
     boolean existsCustomerByEmail(String email);
-    boolean existsCustomerById(Integer id);
+    boolean existsCustomerById(int id);
 
 }

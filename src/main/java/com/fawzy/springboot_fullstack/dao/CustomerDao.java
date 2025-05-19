@@ -12,7 +12,7 @@ public interface CustomerDao {
     void delete(int id);
 
     boolean existsCustomerWithEmail(String email);
-    boolean existsCustomerWithId(Integer id);
+    boolean existsCustomerWithId(int id);
 
     List<Customer> getAllCustomers();
     Optional<Customer> selectCustomerById(int id);
